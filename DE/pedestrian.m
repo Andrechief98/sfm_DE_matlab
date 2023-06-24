@@ -3,17 +3,19 @@ classdef pedestrian < handle
         ID;
         trajectory=[];
         color=[];
+        radius;
     end
 
     methods
 
-        function obj = pedestrian(id,traj,color)
+        function obj = pedestrian(id,traj,color,radius)
          if nargin > 0
             obj.ID = id;
             traj(isnan(traj))=-99999999;
             obj.trajectory=traj;
             obj.trajectory(:,2:3)=obj.trajectory(:,2:3)./1000;
             obj.color=color;
+            obj.radius=radius;
             
          end
         end

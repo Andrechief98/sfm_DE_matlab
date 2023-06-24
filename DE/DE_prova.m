@@ -30,7 +30,7 @@ body_colors = [
 % CREAZIONE LISTA PEDONI
 for i=1:13
     temp_traj=[data_1_1.Time(:) data_1_1.X(:,i) data_1_1.Y(:,i)];
-    ped_list=[ped_list pedestrian(i,temp_traj,body_colors(i,:))];
+    ped_list=[ped_list pedestrian(i,temp_traj,body_colors(i,:),0.6)];
 end
 
 % CREAZIONE PARAMETRI SOCIAL FORCE MODEL
@@ -91,6 +91,10 @@ hold on
 
 for k=1:length(simulation_time)
     k;
+    
+    % CHIAMATA DIFFERENTIAL ALGORITHM PER OTTENERE I NUOVI PARAMETRI DEL
+    % MODELLO PRIMA DI OGNI NUOVA START-GOAL TRAJECTORY
+
     for t=simulation_time(k,1):time_step:simulation_time(k,2)
         index=int32(t*100);
         robot.goal_pos
